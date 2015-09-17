@@ -1,0 +1,6 @@
+Real time mapping notes:
+
+	+ comment in/out the run function in Wificonnector
+	+ check the fastest run in robot class
+	+ if no solution for shortest path, send 'B'
+	+ if has solution, send 'A' + path

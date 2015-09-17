@@ -1,0 +1,78 @@
+﻿<Window x:Class="MDPSimulator.SimulatingPage"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Simulating Page" Width="1024" Height="764" >
+    <Grid>
+        <Grid x:Name="mapGrid" Background="#E6E6DA" Height="600" Margin="10,70,556,0" VerticalAlignment="Top" MouseLeftButtonDown="MapGrid_Click" >
+        </Grid>
+        <TextBlock Margin="10,10,666,663" HorizontalAlignment="Center"  Foreground="#FF074AFD" Width="340" FontSize="37.333" ><Run Text=" "/><Run Text="Simulator"/></TextBlock>
+        <StackPanel x:Name="RadioButtonGrid_TextBlockGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="500,70,316,525" Width="200" Height="138">
+            <TextBlock Text="Explore" Margin="45,0,55,20" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" Height="27" Width="100"/>
+            <RadioButton x:Name="FollowTheWallButton" Margin="5" GroupName="ExploreGroup" Content="Follow The Wall" />
+            <RadioButton x:Name="DFSButton" Margin="5" GroupName="ExploreGroup" Content="Depth First Search" Height="55" />
+        </StackPanel>
+        <StackPanel x:Name="RadioButtonGrid_TextBlockGrid_Copy" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="500,206,316,390" Width="200" Height="135">
+            <TextBlock Text="Fast Path" Margin="50,0,40,20" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" Width="110" Height="27"/>
+            <RadioButton x:Name="AStarButton" Margin="5" GroupName="Run" Content="A Star" />
+            <RadioButton x:Name="BFSButton" Margin="5" GroupName="Run" Content="BFS Algorithm"/>
+        </StackPanel>
+        <Button  x:Name="exploreButton" Content="Explore" Margin="665,127,286,572" Click="exploreButton_Click" Background="{x:Null}" BorderBrush="#FF074AFD" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="runButton" Content="Run" Margin="665,261,286,436" Click="runButton_Click" Background="{x:Null}" BorderBrush="#FF074AFD" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button  x:Name="loadButton" Content="Load Map" Margin="10,675,936,26" Click="loadMapClick" Background="{x:Null}" BorderBrush="#FF074AFD" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="exportButton" Content="Export Map" Margin="110,675,816,26" Click="exportButton_Click" Background="{x:Null}" BorderBrush="#FF074AFD" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="resetButton" Content="Reset" Margin="390,675,556,26" Click="resetButton_Click" Background="{x:Null}" BorderBrush="#FF074AFD" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <ProgressBar x:Name="CoverageProgressbar" Value="0" Margin="760,114,81,601" />
+        <Label x:Name="coverageLabel" Content="0%" HorizontalContentAlignment="Stretch" Margin="940,105,10,579" BorderThickness="1"/>
+        <TextBlock Margin="810,154,69,531" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" RenderTransformOrigin="0.486,1.2" Width="137"><Run Text=" "/><Run Text="Timer"/></TextBlock>
+        <TextBlock Margin="803,70,76,601" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" Width="137"><Run Text=" "/><Run Text="Coverage"/></TextBlock>
+        <ProgressBar x:Name="TimerProgressbar" Value="100" Margin="760,184,81,531" />
+        <Label x:Name="timeLabel" Content="06:00" HorizontalContentAlignment="Stretch" Margin="940,175,10,495" BorderThickness="1"/>
+        <TextBlock Margin="770,243,156,458" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" RenderTransformOrigin="0.486,1.2" Width="90"><Run Text=" "/><Run Text="Location"/></TextBlock>
+        <TextBlock Text="[" Margin="770,273,236,422" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" RenderTransformOrigin="0.486,1.2" Width="10" FontWeight="Bold">
+
+        </TextBlock>
+        <TextBlock Text="]" Margin="850,273,156,422" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" RenderTransformOrigin="0.486,1.2" Width="10" FontWeight="Bold">
+
+        </TextBlock>
+        <TextBlock Text="," Margin="814,273,192,439" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" RenderTransformOrigin="0.486,1.2" Width="10" FontWeight="Bold">
+        </TextBlock>
+        <Label x:Name="xLabel" Content="1" Margin="785,271,192,407" FontWeight="Bold" Foreground="#FFF50E0E" FontSize="16"/>
+        <Label x:Name="yLabel" Content="1" Margin="824,271,156,408" FontWeight="Bold" Foreground="#FFF50E0E" FontSize="16"/>
+        <TextBlock Margin="875,243,21,460" HorizontalAlignment="Center" Foreground="#FF074AFD" FontSize="18.667" RenderTransformOrigin="0.486,1.2" Width="120"><Run Text="     "/><Run Text="Speed"/></TextBlock>
+        <Label x:Name="speedLabel" Content="1" Margin="918,271,51,399" Foreground="#FFF50E0E" FontWeight="Bold" FontSize="16"/>
+        <Button x:Name="settingsButton" Content="Setting" Margin="905,20,36,668" Click="settingsButton_Click" Background="#FF074AFD" BorderBrush="#FF074AFD" Foreground="White" />
+        <ScrollViewer x:Name="scrollViewer" Margin="500,341,51,67" BorderThickness="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="Black" Foreground="#FFF7F6F6">
+            <ScrollViewer.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF393A39" Offset="1"/>
+                </LinearGradientBrush>
+            </ScrollViewer.BorderBrush>
+            <!--</Border>-->
+            <!--<Border BorderThickness="2" BorderBrush="Gray" Width="269" Height="336">-->
+            <TextBlock x:Name="consoleBlock" TextWrapping="Wrap" Text="MDP Group 24" VerticalAlignment="Top" Padding="10" Foreground="#FFFBFBFB" Width="260" HorizontalAlignment="Left"/>
+        </ScrollViewer>
+        <Button x:Name="connectButton" Content="Connect" Margin="390,20,556,667" Click="connectButton_Click" Background="#FF074AFD" BorderBrush="#FF074AFD" Foreground="White" RenderTransformOrigin="0.727,0.833" />
+
+    </Grid>
+</Window>
