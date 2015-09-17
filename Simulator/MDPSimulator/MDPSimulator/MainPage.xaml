@@ -1,0 +1,43 @@
+﻿<Window x:Class="MDPSimulator.View.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Group 24" Height="697" Width="934" VerticalContentAlignment="Stretch" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Stretch" FontSize="20">
+    <DockPanel x:Name="scrollviewer" LastChildFill="False">
+        <StackPanel x:Name="buttonsPanel" Width="164">
+            <Button x:Name="connectButton" Content="Connect" Height="54" Margin="20,20,20,10" FontSize="20" ClickMode="Press" Click="connectButton_Click"/>
+            <Button x:Name="loadButton" Content="Load map" Height="54" Margin="20,10" FontSize="20" Click="loadMapClick" Background="#FFDDDDDD" OpacityMask="Black"/>
+            <Button x:Name="exploreButton" Content="WF Explore" Height="54" Margin="20,10" FontSize="20" Click="exploreButton_Click"/>
+            <Button x:Name="runButton" Content="Fastest run" Height="54" Margin="20,10" FontSize="20" Click="runButton_Click"/>
+            <Button x:Name="testButton" Content="DFS Explore" Height="54" Margin="20,10" FontSize="20" Click="dfsExplore_Click"/>
+            <Button x:Name="exportButton" Content="Export map" Height="54" Margin="20,10" FontSize="20" Click="exportButton_Click"/>
+            <Button x:Name="resetButton" Content="Reset" Height="54" Margin="20,10" FontSize="20" Click="resetButton_Click" Background="#FFDDDDDD"/>
+            <Button x:Name="settingsButton" Content="Settings" Height="54" Margin="20,10" FontSize="20" Click="settingsButton_Click"/>
+        </StackPanel>
+        <Grid x:Name="mapGrid" Background="#E6E6DA" Height="600" Margin="10,20,10,0" Width="450" VerticalAlignment="Top"/>
+        <WrapPanel x:Name="statusPanel" Height="265" Margin="20,20,2,0" VerticalAlignment="Top" Width="270" DockPanel.Dock="Top">
+            <Label Content="Coverage:" Height="40" Width="130" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" BorderThickness="1"/>
+            <Label x:Name="coverageLabel" Content="0%" Height="38" Width="122" HorizontalContentAlignment="Stretch" Margin="10,0,0,0"/>
+            <Label Content="Location:" Height="38" Width="130" HorizontalContentAlignment="Right"/>
+            <Label x:Name="xLabel" Content="1" Height="38" Width="26" Margin="10,0,0,0"/>
+            <Label x:Name="yLabel" Content="1" Height="38" Width="26" Margin="10,0,0,0"/>
+            <Label Content="Speed:" Height="38" Width="130" HorizontalContentAlignment="Right"/>
+            <Label x:Name="speedLabel" Content="3" Height="38" Width="122" Margin="10,0,0,0"/>
+            <Label Content="Time:" Height="38" Width="130" HorizontalContentAlignment="Right"/>
+            <Label x:Name="timeLabel" Content="06:00" Height="38" Width="122" Margin="10,0,0,0"/>
+        </WrapPanel>
+        <ScrollViewer x:Name="scrollViewer" Margin="0,56,0,79" BorderThickness="2" Width="284" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ScrollViewer.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF393A39" Offset="1"/>
+                </LinearGradientBrush>
+            </ScrollViewer.BorderBrush>
+            <!--<Border BorderThickness="2" BorderBrush="Gray" Width="269" Height="336">-->
+            <TextBlock x:Name="consoleBlock" TextWrapping="Wrap" FontSize="15" Text="MDP Group 24" VerticalAlignment="Top" Padding="10" Foreground="#FF186CE6" Width="260"/>
+            <!--</Border>-->
+        </ScrollViewer>
+
+
+    </DockPanel>
+
+</Window>
